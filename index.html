@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Anugrah Pratama Mandiri | Agensi Penyalur Tenaga Kerja Premium</title>
+    
+    <!-- Meta SEO Tambahan -->
+    <meta name="description" content="PT Anugrah Pratama Mandiri - Agensi penyalur tenaga kerja profesional (ART, Baby Sitter, Driver, Koki, Perawat Lansia) terpercaya.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>">
+    
+    <!-- Import Font Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Import Ikon Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* ========================================================
+           1. VARIABEL & RESET UTAMA (+ DARK MODE)
+        ======================================================== */
+        :root {
+            --navy-dark: #0A1128;      
+            --navy-main: #162B4E;      
+            --gold-accent: #2790e5;    /* Warna biru cerah dari kode asli Anda */
+            --gold-light: #63a1d7;     /* Latar belakang biru pudar dari kode asli Anda */
+            --bg-base: #FFFFFF;
+            --gray-bg: #F4F7F6;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+            --white-absolute: #FFFFFF;
+            
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 30px rgba(10, 17, 40, 0.08);
+            --shadow-lg: 0 20px 40px rgba(10, 17, 40, 0.12);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* TEMA GELAP (DARK MODE) */
+        body.dark-mode {
+            --bg-base: #0A1128;
+            --gray-bg: #0d1630;
+            --navy-dark: #FFFFFF;
+            --text-dark: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-color: #1E293B;
+            --navy-main: #162B4E;
+            --gold-light: #163654;
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-base); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; transition: background-color 0.4s ease, color 0.4s ease; }
+        
+        h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        img { max-width: 100%; height: auto; display: block; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section-padding { padding: 120px 0; }
+        .bg-light { background-color: var(--gray-bg); transition: background-color 0.4s ease; }
+        .bg-gold { background-color: var(--gold-light); transition: background-color 0.4s ease; }
+        .text-center { text-align: center; }
+
+        /* Label Kecil Elegan */
+        .subtitle { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gold-accent); margin-bottom: 20px; }
+        .subtitle::before, .subtitle.center::after { content: ""; height: 2px; width: 40px; background-color: var(--gold-accent); display: inline-block; border-radius: 2px; }
+        .subtitle.center { justify-content: center; }
+        
+        .section-title { font-size: 2.75rem; color: var(--navy-dark); margin-bottom: 20px; line-height: 1.2; transition: color 0.4s ease; }
+        .section-desc { font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 50px auto; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ========================================================
+           2. NAVIGASI & HEADER
+        ======================================================== */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px 0; transition: var(--transition);
+        }
+        body.dark-mode nav { background: rgba(10, 17, 40, 0.95); border-bottom-color: rgba(255,255,255,0.1); }
+        nav.scrolled { padding: 15px 0; box-shadow: var(--shadow-sm); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo { display: flex; align-items: center; gap: 10px; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); }
+        .logo i { color: var(--gold-accent); font-size: 2rem; }
+        
+        .menu-wrapper { display: flex; align-items: center; gap: 20px; }
+        .menu { display: flex; gap: 35px; align-items: center; }
+        .menu a { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); position: relative; }
+        .menu a.nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--gold-accent); transition: var(--transition); }
+        .menu a.nav-link:hover::after { width: 100%; }
+        
+        .btn-gold { background-color: var(--gold-accent); color: var(--white-absolute) !important; padding: 12px 28px; border-radius: 4px; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(39, 144, 229, 0.3); }
+        .btn-gold:hover { background-color: #1a74be; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(39, 144, 229, 0.4); }
+
+        .toggle-mode { background: none; border: none; font-size: 1.5rem; color: var(--navy-dark); cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+        .toggle-mode:hover { background: var(--gray-bg); color: var(--gold-accent); }
+        .hamburger { display: none; font-size: 1.8rem; color: var(--navy-dark); cursor: pointer; }
+
+        /* ========================================================
+           3. BERANDA (HERO SECTION)
+        ======================================================== */
+        .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(10, 17, 40, 0.9) 0%, rgba(10, 17, 40, 0.6) 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; color: var(--white-absolute); padding-top: 80px; }
+        .hero-title { font-size: 4.5rem; line-height: 1.1; margin: 20px 0 30px 0; color: var(--white-absolute); }
+        .hero-title span { color: var(--gold-accent); font-style: italic; }
+        .hero-desc { font-size: 1.2rem; color: #E2E8F0; margin-bottom: 40px; max-width: 600px; font-weight: 300; }
+        
+        .hero-buttons { display: flex; gap: 20px; }
+        .btn-outline { border: 1px solid var(--white-absolute); color: var(--white-absolute); padding: 12px 28px; border-radius: 4px; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; backdrop-filter: blur(5px); }
+        .btn-outline:hover { background-color: var(--white-absolute); color: #0A1128; }
+
+        .hero-stats { position: absolute; bottom: -50px; right: 10%; z-index: 10; background: var(--bg-base); padding: 30px 50px; border-radius: 4px; box-shadow: var(--shadow-lg); display: flex; gap: 50px; border-bottom: 4px solid var(--gold-accent); transition: var(--transition); }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--navy-dark); font-family: 'Playfair Display', serif; }
+        .stat-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ========================================================
+           4. TENTANG / KEUNGGULAN
+        ======================================================== */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
+        .about-images { position: relative; }
+        .img-main { border-radius: 4px; box-shadow: var(--shadow-md); width: 80%; }
+        .img-sub { position: absolute; bottom: -30px; right: 0; width: 50%; border: 10px solid var(--bg-base); border-radius: 4px; box-shadow: var(--shadow-lg); transition: border-color 0.4s ease; }
+        
+        .features-list { margin-top: 40px; display: flex; flex-direction: column; gap: 25px; }
+        .feature-item { display: flex; gap: 20px; }
+        .feature-icon { width: 50px; height: 50px; border-radius: 50%; background: var(--gold-light); color: var(--white-absolute); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+        .feature-text h4 { font-size: 1.2rem; color: var(--navy-dark); margin-bottom: 5px; font-weight: 700; }
+        .feature-text p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* ========================================================
+           5. LAYANAN KAMI
+        ======================================================== */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .service-card { background: var(--bg-base); border-radius: 4px; overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); position: relative; border: 1px solid var(--border-color); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--gold-accent); }
+        .service-img { position: relative; height: 250px; overflow: hidden; }
+        .service-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .service-card:hover .service-img img { transform: scale(1.1); }
+        
+        .service-content { padding: 35px 30px; position: relative; background: var(--bg-base); transition: background-color 0.4s ease; }
+        .service-icon { position: absolute; top: -30px; right: 30px; width: 60px; height: 60px; background: var(--navy-dark); color: var(--gold-accent); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border-radius: 50%; box-shadow: var(--shadow-md); transition: var(--transition); }
+        .service-card:hover .service-icon { background: var(--gold-accent); color: var(--white-absolute); transform: rotateY(180deg); }
+        .service-content h3 { font-size: 1.4rem; color: var(--navy-dark); margin-bottom: 15px; }
+        .service-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0; }
+
+        /* ========================================================
+           6. TESTIMONI (Fitur Baru)
+        ======================================================== */
+        .testimoni-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .testimoni-card { background: var(--bg-base); padding: 40px 30px; border-radius: 8px; box-shadow: var(--shadow-sm); border-top: 4px solid var(--gold-accent); position: relative; transition: var(--transition); border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .testimoni-icon { color: var(--gold-light); font-size: 3rem; position: absolute; top: 20px; right: 30px; z-index: 1; opacity: 0.3; }
+        .stars { color: #F59E0B; margin-bottom: 15px; font-size: 1.2rem; position: relative; z-index: 2; }
+        .testimoni-text { color: var(--text-dark); font-size: 1rem; font-style: italic; margin-bottom: 20px; position: relative; z-index: 2; }
+        .testimoni-author { display: flex; align-items: center; gap: 15px; position: relative; z-index: 2; }
+        .author-avatar { width: 50px; height: 50px; border-radius: 50%; background: var(--navy-main); color: var(--white-absolute); display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .author-info h5 { font-size: 1rem; color: var(--navy-dark); }
+        .author-info span { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* ========================================================
+           7. FORMULIR PREMIUM (Sesuai Struktur Asli + No WA)
+        ======================================================== */
+        .forms-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 40px;}
+        .form-card { background: var(--bg-base); padding: 50px; border-radius: 8px; box-shadow: var(--shadow-md); border-top: 5px solid var(--navy-main); border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .form-card.hrd-form { border-top-color: var(--gold-accent); background: #162B4E; color: var(--white-absolute); }
+        
+        .form-header { margin-bottom: 30px; }
+        .form-card h3 { font-size: 1.8rem; margin-bottom: 10px; color: var(--navy-dark); }
+        .hrd-form h3 { color: var(--white-absolute); }
+        .form-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .hrd-form p { color: #94A3B8; }
+
+        .input-group { margin-bottom: 24px; position: relative; }
+        .input-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dark); }
+        .hrd-form label { color: #E2E8F0; }
+        
+        .form-control { width: 100%; padding: 14px 16px; background: var(--gray-bg); border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem; color: var(--text-dark); transition: var(--transition); outline: none; font-family: inherit; }
+        .hrd-form .form-control { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--white-absolute); }
+        .form-control:focus { border-color: var(--navy-main); background: var(--bg-base); box-shadow: 0 0 0 4px rgba(22, 43, 78, 0.1); }
+        .hrd-form .form-control:focus { border-color: var(--gold-accent); background: rgba(255,255,255,0.1); box-shadow: 0 0 0 4px rgba(39, 144, 229, 0.2); }
+        textarea.form-control { height: 120px; resize: vertical; }
+
+        .checkbox-wrapper { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+        .custom-checkbox { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+        .custom-checkbox input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--gold-accent); }
+        .custom-checkbox span { font-size: 0.9rem; color: #cbd5e1; font-weight: 400; }
+
+        .btn-submit { width: 100%; padding: 16px; background: var(--navy-main); color: var(--white-absolute); border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px; }
+        .btn-submit:hover { background: #0A1128; box-shadow: var(--shadow-md); }
+        .hrd-form .btn-submit { background: var(--gold-accent); color: var(--white-absolute); }
+        .hrd-form .btn-submit:hover { background: #1a74be; }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .spinner { animation: spin 1s linear infinite; display: inline-block; }
+
+        /* ========================================================
+           8. FOOTER & GOOGLE MAPS
+        ======================================================== */
+        footer { background: #0A1128; color: var(--white-absolute); padding: 80px 0 30px; border-top: 5px solid var(--gold-accent); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.5fr; gap: 60px; margin-bottom: 60px; }
+        
+        .footer-about p { color: #94A3B8; margin: 20px 0; font-size: 0.95rem; line-height: 1.8; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a { width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--white-absolute); }
+        .social-icons a:hover { background: var(--gold-accent); border-color: var(--gold-accent); transform: translateY(-3px); }
+        
+        .footer-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white-absolute); margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        .footer-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 30px; height: 2px; background: var(--gold-accent); }
+        
+        .contact-info { display: flex; flex-direction: column; gap: 20px; }
+        .contact-item { display: flex; gap: 15px; align-items: flex-start; }
+        .contact-item i { font-size: 1.5rem; color: var(--gold-accent); }
+        .contact-text h5 { font-size: 0.95rem; color: var(--white-absolute); margin-bottom: 5px; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .contact-text p { color: #94A3B8; font-size: 0.9rem; }
+
+        .btn-copy { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white-absolute); padding: 6px 12px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; transition: var(--transition); }
+        .btn-copy:hover { background: var(--gold-accent); border-color: var(--gold-accent); }
+
+        .map-wrapper { width: 100%; border-radius: 8px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); height: 250px; }
+        .map-wrapper iframe { width: 100%; height: 100%; object-fit: cover; }
+        .copyright { text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; color: #64748B; font-size: 0.9rem; }
+
+        /* ========================================================
+           9. TOMBOL WA MELAYANG & BACK TO TOP
+        ======================================================== */
+        .floating-container { position: fixed; bottom: 40px; right: 40px; display: flex; flex-direction: column; gap: 15px; align-items: flex-end; z-index: 1000; }
+        
+        .btn-back-top { background: var(--navy-dark); color: var(--white-absolute); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; box-shadow: var(--shadow-md); opacity: 0; transform: translateY(20px); pointer-events: none; transition: var(--transition); border: 1px solid rgba(255,255,255,0.1);}
+        .btn-back-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .btn-back-top:hover { background: var(--gold-accent); }
+
+        .wa-wrapper { position: relative; display: flex; align-items: center; gap: 15px; }
+        .wa-bubble { background: var(--white-absolute); color: #1E293B; padding: 8px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; box-shadow: var(--shadow-md); opacity: 0; transform: translateX(20px); transition: 0.5s ease; border: 1px solid var(--border-color); white-space: nowrap; }
+        .wa-bubble.show { opacity: 1; transform: translateX(0); }
+        
+        .wa-float { background: #25D366; color: var(--white-absolute); width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); transition: var(--transition); position: relative;}
+        .wa-float:hover { transform: scale(1.1) translateY(-5px); background: #20BA5C; }
+        .wa-float::before { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #25D366; animation: wa-pulse 2s infinite; }
+
+        /* ========================================================
+           RESPONSIVE (MOBILE & TABLET)
+        ======================================================== */
+        @media (max-width: 1024px) {
+            .about-grid, .forms-wrapper, .footer-grid { grid-template-columns: 1fr; gap: 50px; }
+            .hero-stats { display: none; }
+            .map-wrapper { height: 300px; }
+        }
+        @media (max-width: 768px) {
+            .menu { position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-base); flex-direction: column; gap: 0; padding: 0; box-shadow: var(--shadow-md); display: none; border-top: 1px solid var(--border-color); }
+            .menu.active { display: flex; }
+            .menu a { padding: 15px 24px; width: 100%; border-bottom: 1px solid var(--border-color); }
+            .menu a.nav-link::after { display: none; }
+            .btn-gold { border-radius: 0; padding: 15px 24px !important; }
+            .hamburger { display: block; }
+
+            .hero-title { font-size: 3rem; }
+            .section-title { font-size: 2.2rem; }
+            .section-padding { padding: 80px 0; }
+            
+            .floating-container { bottom: 20px; right: 20px; }
+            .wa-float { width: 55px; height: 55px; font-size: 1.8rem; }
+            .wa-bubble { display: none; }
+            .hero-buttons { flex-direction: column; }
+            .btn-outline { text-align: center; }
+            .form-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR DENGAN HAMBURGER & DARK MODE -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="ph-fill ph-crown"></i>
+                PT. Anugrah Pratama Mandiri
+            </a>
+            
+            <div class="menu-wrapper">
+                <button class="toggle-mode" id="theme-toggle" aria-label="Ganti Tema">
+                    <i class="ph-bold ph-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger-btn">
+                    <i class="ph-bold ph-list"></i>
+                </div>
+            </div>
+
+            <div class="menu" id="nav-menu">
+                <a href="#tentang" class="nav-link">Perusahaan</a>
+                <a href="#layanan" class="nav-link">Layanan</a>
+                <a href="#pendaftaran" class="nav-link">Portal Registrasi</a>
+                <a href="#kontak" class="nav-link">Kontak</a>
+                <a href="#pendaftaran" class="btn-gold">Pesan Pekerja</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container relative">
+            <div class="hero-content reveal">
+                <div class="subtitle">Agensi Penyalur Resmi & Legal</div>
+                <h1 class="hero-title">Melayani dengan Hati,<br>Menjaga <span>Kepercayaan.</span></h1>
+                <p class="hero-desc">Bermitra dengan PT Anugrah Pratama Mandiri untuk menghadirkan tenaga kerja profesional, terlatih, dan berdedikasi tinggi demi kenyamanan keluarga Anda.</p>
+                <div class="hero-buttons">
+                    <a href="#pendaftaran" class="btn-gold">Konsultasi Kebutuhan</a>
+                    <a href="#layanan" class="btn-outline">Lihat Layanan Kami</a>
+                </div>
+            </div>
+            
+            <!-- Statistik Desktop -->
+            <div class="hero-stats reveal" style="transition-delay: 0.3s;">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Tahun Pengalaman</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Klien Puas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Terverifikasi</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TENTANG / KEUNGGULAN (Sesuai Kode Asli) -->
+    <section id="tentang" class="section-padding bg-light">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-images reveal">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" alt="Tim Profesional APM" class="img-main" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80" alt="Detail Pekerjaan" class="img-sub" loading="lazy">
+                </div>
+                <div class="about-text reveal" style="transition-delay: 0.2s;">
+                    <div class="subtitle">Standar Perusahaan</div>
+                    <h2 class="section-title">Rekrutmen Berbasis Kualitas & Integritas.</h2>
+                    <p class="section-desc" style="margin-bottom: 20px;">Kami memahami bahwa memasukkan seseorang ke dalam lingkungan privat (rumah tangga) membutuhkan tingkat kepercayaan yang mutlak. Oleh karena itu, kami menerapkan filter berlapis.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="ph-fill ph-shield-check"></i></div>
+                            <div class="feature-text">
+                                <h4>Screening Latar Belakang Ketat</h4>
+                                <p>Setiap kandidat melewati pemeriksaan dokumen legal (KTP & KK) dan evaluasi rekam jejak pekerjaan sebelumnya.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="ph-fill ph-certificate"></i></div>
+                            <div class="feature-text">
+                                <h4>Pelatihan & Standardisasi</h4>
+                                <p>Bukan sekadar menyalurkan, kami membekali kandidat dengan etika kerja, tata krama, dan spesialisasi tugas standar nasional.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="ph-fill ph-handshake"></i></div>
+                            <div class="feature-text">
+                                <h4>Garansi Penggantian Premium</h4>
+                                <p>Perlindungan untuk klien. Penggantian tenaga kerja tanpa biaya administrasi tambahan selama masa garansi masih berlaku.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAYANAN KAMI (Sesuai Kode Asli) -->
+    <section id="layanan" class="section-padding">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="subtitle center">Katalog Layanan</div>
+                <h2 class="section-title">Tenaga Ahli Spesialis</h2>
+                <p class="section-desc">Pilih kategori layanan yang dirancang secara khusus untuk memenuhi kebutuhan rumah tangga modern yang serba dinamis.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- ART -->
+                <div class="service-card reveal">
+                    <div class="service-img"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80" alt="Asisten Rumah Tangga" loading="lazy"></div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="ph-light ph-broom"></i></div>
+                        <h3>Asisten Rumah Tangga</h3>
+                        <p>Mengelola kebersihan rumah, pencucian pakaian, dan tata graha harian dengan detail tinggi. Tersedia paket menginap dan pulang-pergi.</p>
+                    </div>
+                </div>
+
+                <!-- Baby Sitter -->
+                <div class="service-card reveal" style="transition-delay: 0.1s;">
+                    <div class="service-img"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80" alt="Baby Sitter" loading="lazy"></div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="ph-light ph-baby"></i></div>
+                        <h3>Profesional Baby Sitter</h3>
+                        <p>Pengasuh bersertifikat yang terlatih dalam stimulasi tumbuh kembang, penyiapan MPASI higienis, dan protokol keselamatan balita.</p>
+                    </div>
+                </div>
+
+                <!-- Suster Lansia -->
+                <div class="service-card reveal" style="transition-delay: 0.2s;">
+                    <div class="service-img"><img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80" alt="Perawat Lansia" loading="lazy"></div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="ph-light ph-wheelchair"></i></div>
+                        <h3>Perawat Lansia</h3>
+                        <p>Pendampingan penuh empati untuk orang tua. Menguasai jadwal medikasi ringan, fisioterapi dasar, dan pemantauan kondisi vital.</p>
+                    </div>
+                </div>
+
+                <!-- Koki -->
+                <div class="service-card reveal" style="transition-delay: 0.3s;">
+                    <div class="service-img"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80" alt="Koki Privat" loading="lazy"></div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="ph-light ph-cooking-pot"></i></div>
+                        <h3>Private Chef / Koki</h3>
+                        <p>Spesialis hidangan keluarga yang mampu menyesuaikan menu masakan china, india, nusantara dengan standar higienitas restoran.</p>
+                    </div>
+                </div>
+
+                <!-- Driver -->
+                <div class="service-card reveal" style="transition-delay: 0.4s;">
+                    <div class="service-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80" alt="Sopir Pribadi" loading="lazy"></div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="ph-light ph-steering-wheel"></i></div>
+                        <h3>Sopir Eksekutif</h3>
+                        <p>Mengemudi dengan standar keselamatan tinggi, hafal rute perkotaan, berpenampilan rapi, dan menjaga kerahasiaan klien (VIP).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONI KLIEN (TAMBAHAN BARU) -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="subtitle center">Ulasan Klien</div>
+                <h2 class="section-title">Kepercayaan Anda, Prioritas Kami</h2>
+            </div>
+            
+            <div class="testimoni-grid">
+                <div class="testimoni-card reveal">
+                    <i class="ph-fill ph-quotes testimoni-icon"></i>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimoni-text">"Sangat terbantu dengan APM. Pekerjanya telaten, sabar, dan dokumennya jelas. Proses administrasinya transparan dan cepat."</p>
+                    <div class="testimoni-author">
+                        <div class="author-avatar">I</div>
+                        <div class="author-info"><h5>Ibu Sarah W.</h5><span>Klien Jakarta Selatan</span></div>
+                    </div>
+                </div>
+                
+                <div class="testimoni-card reveal" style="transition-delay: 0.1s;">
+                    <i class="ph-fill ph-quotes testimoni-icon"></i>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimoni-text">"Susah cari driver yang amanah dan sopan, tapi lewat APM saya dapat kandidat yang tepat. Pelayanannya tetap memuaskan."</p>
+                    <div class="testimoni-author">
+                        <div class="author-avatar">B</div>
+                        <div class="author-info"><h5>Bpk. Budi H.</h5><span>Klien BSD Tangerang</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAL FORMULIR (Struktur Persis Asli + Input Nomor WA + Animasi Loading) -->
+    <section id="pendaftaran" class="section-padding bg-gold">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="subtitle center">Portal Resmi</div>
+                <h2 class="section-title">Mari Bermitra Bersama Kami</h2>
+                <p class="section-desc">Proses Website yang dirancang untuk efisiensi. Data Anda akan diteruskan secara aman dan langsung diproses oleh representatif kami.</p>
+            </div>
+
+            <div class="forms-wrapper">
+                
+                <!-- 1. FORM KLIEN (PESAN PEKERJA) -->
+                <div class="form-card reveal">
+                    <div class="form-header">
+                        <h3>Kebutuhan Klien</h3>
+                        <p>Isi rincian kebutuhan Anda untuk mendapatkan profil kandidat.</p>
+                    </div>
+                    <form id="formKlien">
+                        <div class="input-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" id="kNama" class="form-control" placeholder="Nama representatif" required>
+                        </div>
+                        <div class="input-group">
+                            <!-- TAMBAHAN: NOMOR WHATSAPP KLIEN -->
+                            <label>Nomor WhatsApp Anda</label>
+                            <input type="tel" id="kTelp" class="form-control" placeholder="Contoh: 081234..." required>
+                        </div>
+                        <div class="input-group">
+                            <label>Area Penempatan Domisili</label>
+                            <input type="text" id="kDomisili" class="form-control" placeholder="Contoh: Kebayoran Baru, Jakarta" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Kategori Layanan</label>
+                            <select id="kLayanan" class="form-control" required>
+                                <option value="" disabled selected>Pilih Kategori...</option>
+                                <option value="Asisten Rumah Tangga (ART)">Asisten Rumah Tangga</option>
+                                <option value="Profesional Baby Sitter">Profesional Baby Sitter</option>
+                                <option value="Perawat Lansia">Perawat Lansia</option>
+                                <option value="Private Chef / Koki">Private Chef / Koki</option>
+                                <option value="Sopir Eksekutif">Sopir Eksekutif</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Kriteria & Spesifikasi Khusus</label>
+                            <textarea id="kKriteria" class="form-control" placeholder="Tuliskan harapan spesifik Anda (misal: rentang usia, keahlian khusus memasak makanan balita, bersedia lembur, dll)." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit" id="btnSubmitKlien">
+                            Kirim Permintaan Konsultasi <i class="ph-bold ph-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- 2. FORM HRD (PELAMAR) -->
+                <div class="form-card hrd-form reveal" style="transition-delay: 0.2s;">
+                    <div class="form-header">
+                        <h3>Bursa Karir</h3>
+                        <p>Website resmi untuk bergabung menjadi tenaga kerja tersertifikasi.</p>
+                    </div>
+                    <form id="formLamar">
+                        <div class="input-group">
+                            <label>Nama Lengkap (Sesuai KTP)</label>
+                            <input type="text" id="pNama" class="form-control" placeholder="Contoh: Siti Aminah" required>
+                        </div>
+                        <div class="input-group">
+                            <!-- TAMBAHAN: NOMOR WHATSAPP PELAMAR -->
+                            <label>Nomor WhatsApp Aktif</label>
+                            <input type="tel" id="pTelp" class="form-control" placeholder="Contoh: 0813..." required>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="input-group">
+                                <label>Usia</label>
+                                <input type="number" id="pUsia" class="form-control" placeholder="Usia Anda" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Asal Daerah</label>
+                                <input type="text" id="pAsal" class="form-control" placeholder="Kota / Kabupaten" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Minat Posisi</label>
+                            <select id="pPosisi" class="form-control" required>
+                                <option value="" disabled selected>Pilih Posisi Utama...</option>
+                                <option value="Asisten Rumah Tangga">Asisten Rumah Tangga</option>
+                                <option value="Baby Sitter">Baby Sitter</option>
+                                <option value="Perawat Lansia">Perawat Lansia</option>
+                                <option value="Koki Masak">Koki Masak</option>
+                                <option value="Sopir Pribadi">Sopir Pribadi</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label style="margin-bottom: 15px;">Persyaratan Kesiapan Fisik & Mental</label>
+                            <div class="checkbox-wrapper">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" class="cb-kesiapan" value="Bersedia sistem kerja menginap">
+                                    <span>Bersedia tinggal di kediaman klien (Menginap)</span>
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" class="cb-kesiapan" value="Tidak fobia / alergi pada hewan">
+                                    <span>Tidak memiliki fobia atau alergi pada hewan peliharaan (Sampaikan pada admin jika ada)</span>
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" class="cb-kesiapan" value="Dokumen KTP & KK Lengkap Asli">
+                                    <span>Memiliki KTP Asli/Foto Copy Kartu Keluarga</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-submit" id="btnSubmitLamar" style="margin-top: 30px;">
+                            Ajukan Lamaran ke HRD <i class="ph-bold ph-paper-plane-tilt"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & MAPS (Map asli Anda) -->
+    <footer id="kontak">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div class="footer-about">
+                    <div class="logo" style="color: var(--white-absolute); font-size: 1.8rem;">
+                        <i class="ph-fill ph-crown"></i> PT. Anugrah Pratama Mandiri
+                    </div>
+                    <p>PT Anugrah Pratama Mandiri adalah badan hukum resmi yang bergerak di bidang layanan konsultasi dan penyaluran sumber daya manusia premium, berdedikasi menciptakan ekosistem kerja yang aman bagi klien dan pekerja.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="#"><i class="ph-fill ph-linkedin-logo"></i></a>
+                        <a href="#"><i class="ph-fill ph-facebook-logo"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Kantor Operasional</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="ph-fill ph-map-pin-line"></i>
+                            <div class="contact-text">
+                                <h5>Alamat Lengkap</h5>
+                                <p>Jl. Komp. Perdagangan No.I B. 05, RT.5/RW.4, Kedaung Kali Angke, Kecamatan Cengkareng, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11710</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="ph-fill ph-envelope-open"></i>
+                            <div class="contact-text">
+                                <h5>Email</h5>
+                                <p>anugrahpratamamandiri@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="ph-fill ph-phone-call"></i>
+                            <div class="contact-text">
+                                <h5>Hotline Pemasaran</h5>
+                                <p>+62 813 989 8660</p>
+                                <p>(Senin - Minggu, 08:00 - 16:30 WIB) (18:30 - 22:00 WIB)</p>
+                                <!-- TOMBOL COPY WA BARU -->
+                                <button type="button" class="btn-copy" onclick="copyWA(this)">
+                                    <i class="ph-bold ph-copy"></i> Salin Nomor WA
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Google Maps</h4>
+                    <div class="map-wrapper">
+                        <!-- IFRAME MAPS ASLI ANDA -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.91818095291!2d106.7518520736375!3d-6.15555646033062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f70040a682bf%3A0x4276130e56543110!2sPT.%20Anugrah%20Pratama%20Mandiri!5e1!3m2!1sid!2sid!4v1781606653018!5m2!1sid!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+            </div>
+            <div class="copyright">
+                &copy; 2025 PT Anugrah Pratama Mandiri. Hak Cipta Dilindungi Undang-Undang.
+            </div>
+        </div>
+    </footer>
+
+    <!-- CONTAINER MELAYANG (WA, BUBBLE & BACK TO TOP) -->
+    <div class="floating-container">
+        <div class="btn-back-top" id="backToTop" aria-label="Kembali ke atas" onclick="window.scrollTo(0,0)"><i class="ph-bold ph-caret-up"></i></div>
+        <div class="wa-wrapper">
+            <div class="wa-bubble" id="waBubble">Ada pertanyaan? Chat admin</div>
+            <a href="https://wa.me/628139898660" target="_blank" class="wa-float" aria-label="WhatsApp">
+                <i class="ph-fill ph-whatsapp-logo"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- SCRIPT (LOGIKA LENGKAP) -->
+    <script>
+        // 1. PENGATURAN NOMOR WHATSAPP ADMIN
+        const noWhatsAppAdmin = "628139898660";
+
+        // 2. FITUR DARK MODE (Menyimpan di LocalStorage)
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'dark') { 
+            document.body.classList.add('dark-mode'); 
+            themeIcon.className = 'ph-bold ph-sun'; 
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.className = 'ph-bold ph-sun';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.className = 'ph-bold ph-moon';
+            }
+        });
+
+        // 3. FUNGSI LOADING UNTUK FORMULIR
+        function prosesForm(e, btnId, isiPesan) {
+            e.preventDefault();
+            const btn = document.getElementById(btnId);
+            const originalHTML = btn.innerHTML;
+            
+            // Efek Loading
+            btn.innerHTML = '<i class="ph-bold ph-spinner spinner"></i> Memproses Data...';
+            btn.style.opacity = '0.8';
+
+            // Jeda 1.5 detik
+            setTimeout(() => {
+                window.open(`https://wa.me/${noWhatsAppAdmin}?text=${isiPesan}`, '_blank');
+                btn.innerHTML = originalHTML; // Kembalikan teks asli
+                btn.style.opacity = '1';
+                e.target.reset(); // Kosongkan form
+            }, 1500);
+        }
+
+        // PEMROSESAN FORM KLIEN
+        document.getElementById('formKlien').addEventListener('submit', function(e) {
+            const nama = document.getElementById('kNama').value;
+            const telp = document.getElementById('kTelp').value;
+            const domisili = document.getElementById('kDomisili').value;
+            const layanan = document.getElementById('kLayanan').value;
+            const kriteria = document.getElementById('kKriteria').value;
+            
+            const teksSurat = `*FORM PERMINTAAN KLIEN VIP*%0A%0A*Salam Hormat Tim PT. Anugrah Pratama Mandiri*,%0ASaya mengajukan permintaan tenaga kerja dengan spesifikasi berikut:%0A%0A *Representatif:* ${nama}%0A *No. WhatsApp:* ${telp}%0A *Area Domisili:* ${domisili}%0A *Layanan Pilihan:* ${layanan}%0A%0A*Detail Instruksi Khusus:*%0A_"${kriteria}"_%0A%0AMohon untuk dapat ditindaklanjuti dengan pengiriman portofolio kandidat yang sesuai. Terima kasih.`;
+            
+            prosesForm(e, 'btnSubmitKlien', teksSurat);
+        });
+
+        // PEMROSESAN FORM HRD / PELAMAR
+        document.getElementById('formLamar').addEventListener('submit', function(e) {
+            const nama = document.getElementById('pNama').value;
+            const telp = document.getElementById('pTelp').value;
+            const usia = document.getElementById('pUsia').value;
+            const asal = document.getElementById('pAsal').value;
+            const posisi = document.getElementById('pPosisi').value;
+            
+            // Evaluasi Ceklis Syarat
+            let kesiapanArray = [];
+            document.querySelectorAll('.cb-kesiapan:checked').forEach((cb) => { 
+                kesiapanArray.push("✔️ " + cb.value); 
+            });
+            const kesiapanTeks = kesiapanArray.length > 0 ? kesiapanArray.join("%0A") : "❌ Belum ada kesiapan yang dikonfirmasi.";
+
+            const teksSurat = `*WEBSITE REKRUTMEN HRD*%0A%0A*Yth. Tim HRD APM Agency*,%0AMelalui formulir website resmi, saya bermaksud mengajukan diri untuk bergabung dengan data awal sebagai berikut:%0A%0A🔹 *Nama (Sesuai KTP):* ${nama}%0A🔹 *No. WhatsApp:* ${telp}%0A🔹 *Usia:* ${usia} Tahun%0A🔹 *Domisili Asal:* ${asal}%0A🔹 *Posisi Dilamar:* ${posisi}%0A%0A*Kualifikasi Kesiapan Kerja:*%0A${kesiapanTeks}%0A%0ASaya menyatakan data di atas adalah benar dan siap mengikuti tahapan wawancara serta verifikasi SKCK.`;
+            
+            prosesForm(e, 'btnSubmitLamar', teksSurat);
+        });
+
+        // 4. EFEK NAVBAR, SCROLL REVEAL & BACK TO TOP
+        const backToTopBtn = document.getElementById('backToTop');
+        const nav = document.getElementById('navbar');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) { nav.classList.add('scrolled'); } 
+            else { nav.classList.remove('scrolled'); }
+
+            if (window.scrollY > 400) { backToTopBtn.classList.add('show'); } 
+            else { backToTopBtn.classList.remove('show'); }
+        });
+
+        function jalankanReveal() {
+            const elements = document.querySelectorAll(".reveal");
+            const windowHeight = window.innerHeight;
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) { el.classList.add("active"); }
+            });
+        }
+        window.addEventListener("scroll", jalankanReveal);
+        setTimeout(jalankanReveal, 100); 
+
+        // 5. FITUR COPY NOMOR WA KE CLIPBOARD
+        function copyWA(btnElement) {
+            navigator.clipboard.writeText("08139898660").then(() => {
+                const teksAsli = btnElement.innerHTML;
+                btnElement.innerHTML = '<i class="ph-bold ph-check"></i> Tersalin!';
+                btnElement.style.backgroundColor = 'var(--gold-accent)';
+                btnElement.style.borderColor = 'var(--gold-accent)';
+                
+                setTimeout(() => {
+                    btnElement.innerHTML = teksAsli;
+                    btnElement.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                    btnElement.style.borderColor = 'rgba(255,255,255,0.2)';
+                }, 3000);
+            });
+        }
+
+        // 6. HAMBURGER MENU (UNTUK LAYAR HP)
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburgerBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            if (navMenu.classList.contains('active')) {
+                hamburgerBtn.innerHTML = '<i class="ph-bold ph-x"></i>';
+            } else {
+                hamburgerBtn.innerHTML = '<i class="ph-bold ph-list"></i>';
+            }
+        });
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburgerBtn.innerHTML = '<i class="ph-bold ph-list"></i>';
+            });
+        });
+
+        // 7. MUNCULKAN BUBBLE WA SETELAH 3 DETIK
+        setTimeout(() => { document.getElementById('waBubble').classList.add('show'); }, 3000);
+        document.querySelector('.wa-float').addEventListener('mouseenter', () => { document.getElementById('waBubble').classList.remove('show'); });
+
+    </script>
+</body>
+</html>
