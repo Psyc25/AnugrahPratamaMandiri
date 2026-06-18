@@ -61,6 +61,7 @@
         img { max-width: 100%; height: auto; display: block; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .relative { position: relative; }
         .section-padding { padding: 120px 0; }
         .bg-light { background-color: var(--gray-bg); transition: background-color 0.4s ease; }
         .bg-gold { background-color: var(--gold-light); transition: background-color 0.4s ease; }
@@ -82,8 +83,10 @@
         ======================================================== */
         nav {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px 0; transition: var(--transition);
+            background: rgba(255, 255, 255, 0.95);
+            -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px 0;
+            transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
         }
         body.dark-mode nav { background: rgba(10, 17, 40, 0.95); border-bottom-color: rgba(255,255,255,0.1); }
         nav.scrolled { padding: 15px 0; box-shadow: var(--shadow-sm); }
@@ -116,8 +119,8 @@
         .hero-desc { font-size: 1.2rem; color: #E2E8F0; margin-bottom: 40px; max-width: 600px; font-weight: 300; }
         
         .hero-buttons { display: flex; gap: 20px; }
-        .btn-outline { border: 1px solid var(--white-absolute); color: var(--white-absolute); padding: 12px 28px; border-radius: 4px; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; backdrop-filter: blur(5px); }
-        .btn-outline:hover { background-color: var(--white-absolute); color: #0A1128; }
+        .btn-outline { border: 1px solid var(--white-absolute); color: var(--white-absolute); padding: 12px 28px; border-radius: 4px; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
+        .btn-outline:hover { background-color: var(--white-absolute); color: var(--navy-dark); }
 
         .hero-stats { position: absolute; bottom: -50px; right: 10%; z-index: 10; background: var(--bg-base); padding: 30px 50px; border-radius: 4px; box-shadow: var(--shadow-lg); display: flex; gap: 50px; border-bottom: 4px solid var(--gold-accent); transition: var(--transition); }
         .stat-item { text-align: center; }
@@ -134,7 +137,7 @@
         
         .features-list { margin-top: 40px; display: flex; flex-direction: column; gap: 25px; }
         .feature-item { display: flex; gap: 20px; }
-        .feature-icon { width: 50px; height: 50px; border-radius: 50%; background: var(--gold-light); color: var(--white-absolute); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+        .feature-icon { width: 50px; height: 50px; border-radius: 50%; background: var(--gold-accent); color: var(--white-absolute); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
         .feature-text h4 { font-size: 1.2rem; color: var(--navy-dark); margin-bottom: 5px; font-weight: 700; }
         .feature-text p { color: var(--text-muted); font-size: 0.95rem; }
 
@@ -149,7 +152,7 @@
         .service-card:hover .service-img img { transform: scale(1.1); }
         
         .service-content { padding: 35px 30px; position: relative; background: var(--bg-base); transition: background-color 0.4s ease; }
-        .service-icon { position: absolute; top: -30px; right: 30px; width: 60px; height: 60px; background: var(--navy-dark); color: var(--gold-accent); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border-radius: 50%; box-shadow: var(--shadow-md); transition: var(--transition); }
+        .service-icon { position: absolute; top: -30px; right: 30px; width: 60px; height: 60px; background: var(--navy-main); color: var(--gold-accent); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border-radius: 50%; box-shadow: var(--shadow-md); transition: var(--transition); }
         .service-card:hover .service-icon { background: var(--gold-accent); color: var(--white-absolute); transform: rotateY(180deg); }
         .service-content h3 { font-size: 1.4rem; color: var(--navy-dark); margin-bottom: 15px; }
         .service-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0; }
@@ -185,15 +188,26 @@
         .hrd-form label { color: #E2E8F0; }
         
         .form-control { width: 100%; padding: 14px 16px; background: var(--gray-bg); border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem; color: var(--text-dark); transition: var(--transition); outline: none; font-family: inherit; }
+        .form-control option { background-color: var(--bg-base); color: var(--text-dark); }
+        select.form-control { -webkit-appearance: none; -moz-appearance: none; appearance: none; padding-right: 44px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; }
         .hrd-form .form-control { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--white-absolute); }
+        .hrd-form .form-control option { background-color: var(--navy-main); color: var(--white-absolute); }
+        .hrd-form select.form-control { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
         .form-control:focus { border-color: var(--navy-main); background: var(--bg-base); box-shadow: 0 0 0 4px rgba(22, 43, 78, 0.1); }
+        select.form-control:focus { background-color: var(--bg-base); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
         .hrd-form .form-control:focus { border-color: var(--gold-accent); background: rgba(255,255,255,0.1); box-shadow: 0 0 0 4px rgba(39, 144, 229, 0.2); }
+        .hrd-form select.form-control:focus { background-color: rgba(255,255,255,0.1); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
         textarea.form-control { height: 120px; resize: vertical; }
+        .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        input.no-spinner::-webkit-outer-spin-button,
+        input.no-spinner::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input.no-spinner[type=number] { -moz-appearance: textfield; appearance: textfield; }
 
         .checkbox-wrapper { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
         .custom-checkbox { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
         .custom-checkbox input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--gold-accent); }
-        .custom-checkbox span { font-size: 0.9rem; color: #cbd5e1; font-weight: 400; }
+        .custom-checkbox span { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
+        .hrd-form .custom-checkbox span { color: #cbd5e1; }
 
         .btn-submit { width: 100%; padding: 16px; background: var(--navy-main); color: var(--white-absolute); border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px; }
         .btn-submit:hover { background: #0A1128; box-shadow: var(--shadow-md); }
@@ -202,6 +216,11 @@
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
         .spinner { animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes wa-pulse {
+            0%   { transform: scale(1);   opacity: 0.8; }
+            70%  { transform: scale(1.6); opacity: 0; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
 
         /* ========================================================
            8. FOOTER & GOOGLE MAPS
@@ -256,6 +275,8 @@
             .map-wrapper { height: 300px; }
         }
         @media (max-width: 768px) {
+            .hero { background-attachment: scroll; }
+            .grid-2col { grid-template-columns: 1fr; }
             .menu { position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-base); flex-direction: column; gap: 0; padding: 0; box-shadow: var(--shadow-md); display: none; border-top: 1px solid var(--border-color); }
             .menu.active { display: flex; }
             .menu a { padding: 15px 24px; width: 100%; border-bottom: 1px solid var(--border-color); }
@@ -308,7 +329,7 @@
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-overlay"></div>
-        <div class="container relative">
+        <div class="container">
             <div class="hero-content reveal">
                 <div class="subtitle">Agensi Penyalur Resmi & Legal</div>
                 <h1 class="hero-title">Melayani dengan Hati,<br>Menjaga <span>Kepercayaan.</span></h1>
@@ -338,7 +359,7 @@
     </section>
 
     <!-- TENTANG / KEUNGGULAN (Sesuai Kode Asli) -->
-    <section id="tentang" class="section-padding bg-light">
+    <section id="tentang" class="section-padding bg-light" style="padding-top: 170px;">
         <div class="container">
             <div class="about-grid">
                 <div class="about-images reveal">
@@ -492,23 +513,23 @@
                     </div>
                     <form id="formKlien">
                         <div class="input-group">
-                            <label>Nama Lengkap</label>
+                            <label for="kNama">Nama Lengkap</label>
                             <input type="text" id="kNama" class="form-control" placeholder="Nama representatif" required>
                         </div>
                         <div class="input-group">
                             <!-- TAMBAHAN: NOMOR WHATSAPP KLIEN -->
-                            <label>Nomor WhatsApp Anda</label>
+                            <label for="kTelp">Nomor WhatsApp Anda</label>
                             <input type="tel" id="kTelp" class="form-control" placeholder="Contoh: 081234..." required>
                         </div>
                         <div class="input-group">
-                            <label>Area Penempatan Domisili</label>
+                            <label for="kDomisili">Area Penempatan Domisili</label>
                             <input type="text" id="kDomisili" class="form-control" placeholder="Contoh: Kebayoran Baru, Jakarta" required>
                         </div>
                         <div class="input-group">
-                            <label>Kategori Layanan</label>
+                            <label for="kLayanan">Kategori Layanan</label>
                             <select id="kLayanan" class="form-control" required>
                                 <option value="" disabled selected>Pilih Kategori...</option>
-                                <option value="Asisten Rumah Tangga (ART)">Asisten Rumah Tangga</option>
+                                <option value="Asisten Rumah Tangga (ART)">Asisten Rumah Tangga (ART)</option>
                                 <option value="Profesional Baby Sitter">Profesional Baby Sitter</option>
                                 <option value="Perawat Lansia">Perawat Lansia</option>
                                 <option value="Private Chef / Koki">Private Chef / Koki</option>
@@ -517,7 +538,7 @@
                             </select>
                         </div>
                         <div class="input-group">
-                            <label>Kriteria & Spesifikasi Khusus</label>
+                            <label for="kKriteria">Kriteria & Spesifikasi Khusus</label>
                             <textarea id="kKriteria" class="form-control" placeholder="Tuliskan harapan spesifik Anda (misal: rentang usia, keahlian khusus memasak makanan balita, bersedia lembur, dll)." required></textarea>
                         </div>
                         <button type="submit" class="btn-submit" id="btnSubmitKlien">
@@ -534,33 +555,33 @@
                     </div>
                     <form id="formLamar">
                         <div class="input-group">
-                            <label>Nama Lengkap (Sesuai KTP)</label>
+                            <label for="pNama">Nama Lengkap (Sesuai KTP)</label>
                             <input type="text" id="pNama" class="form-control" placeholder="Contoh: Siti Aminah" required>
                         </div>
                         <div class="input-group">
                             <!-- TAMBAHAN: NOMOR WHATSAPP PELAMAR -->
-                            <label>Nomor WhatsApp Aktif</label>
+                            <label for="pTelp">Nomor WhatsApp Aktif</label>
                             <input type="tel" id="pTelp" class="form-control" placeholder="Contoh: 0813..." required>
                         </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="grid-2col">
                             <div class="input-group">
-                                <label>Usia</label>
-                                <input type="number" id="pUsia" class="form-control" placeholder="Usia Anda" required>
+                                <label for="pUsia">Usia</label>
+                                <input type="number" id="pUsia" class="form-control no-spinner" placeholder="Usia Anda" min="17" max="65" required>
                             </div>
                             <div class="input-group">
-                                <label>Asal Daerah</label>
+                                <label for="pAsal">Asal Daerah</label>
                                 <input type="text" id="pAsal" class="form-control" placeholder="Kota / Kabupaten" required>
                             </div>
                         </div>
                         <div class="input-group">
-                            <label>Minat Posisi</label>
+                            <label for="pPosisi">Minat Posisi</label>
                             <select id="pPosisi" class="form-control" required>
                                 <option value="" disabled selected>Pilih Posisi Utama...</option>
-                                <option value="Asisten Rumah Tangga">Asisten Rumah Tangga</option>
-                                <option value="Baby Sitter">Baby Sitter</option>
+                                <option value="Asisten Rumah Tangga (ART)">Asisten Rumah Tangga (ART)</option>
+                                <option value="Profesional Baby Sitter">Profesional Baby Sitter</option>
                                 <option value="Perawat Lansia">Perawat Lansia</option>
-                                <option value="Koki Masak">Koki Masak</option>
-                                <option value="Sopir Pribadi">Sopir Pribadi</option>
+                                <option value="Private Chef / Koki">Private Chef / Koki</option>
+                                <option value="Sopir Eksekutif">Sopir Eksekutif</option>
                                 <option value="Lainnya">Lainnya</option>
                             </select>
                         </div>
@@ -658,10 +679,10 @@
 
     <!-- CONTAINER MELAYANG (WA, BUBBLE & BACK TO TOP) -->
     <div class="floating-container">
-        <div class="btn-back-top" id="backToTop" aria-label="Kembali ke atas" onclick="window.scrollTo(0,0)"><i class="ph-bold ph-caret-up"></i></div>
+        <div class="btn-back-top" id="backToTop" aria-label="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="ph-bold ph-caret-up"></i></div>
         <div class="wa-wrapper">
             <div class="wa-bubble" id="waBubble">Ada pertanyaan? Chat admin</div>
-            <a href="https://wa.me/628139898660" target="_blank" class="wa-float" aria-label="WhatsApp">
+            <a href="https://wa.me/628139898660?text=Halo%20PT.%20Anugrah%20Pratama%20Mandiri%2C%20saya%20ingin%20bertanya%20mengenai%20layanan%20Anda." target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Hubungi kami via WhatsApp">
                 <i class="ph-fill ph-whatsapp-logo"></i>
             </a>
         </div>
@@ -697,28 +718,31 @@
         function prosesForm(e, btnId, isiPesan) {
             e.preventDefault();
             const btn = document.getElementById(btnId);
+            const form = e.target; // Tangkap referensi form sebelum async
             const originalHTML = btn.innerHTML;
             
-            // Efek Loading
+            // Efek Loading + Cegah Submit Ganda
             btn.innerHTML = '<i class="ph-bold ph-spinner spinner"></i> Memproses Data...';
             btn.style.opacity = '0.8';
+            btn.disabled = true;
 
             // Jeda 1.5 detik
             setTimeout(() => {
                 window.open(`https://wa.me/${noWhatsAppAdmin}?text=${isiPesan}`, '_blank');
-                btn.innerHTML = originalHTML; // Kembalikan teks asli
+                btn.innerHTML = originalHTML;
                 btn.style.opacity = '1';
-                e.target.reset(); // Kosongkan form
+                btn.disabled = false;
+                form.reset(); // Gunakan referensi yang sudah ditangkap
             }, 1500);
         }
 
         // PEMROSESAN FORM KLIEN
         document.getElementById('formKlien').addEventListener('submit', function(e) {
-            const nama = document.getElementById('kNama').value;
-            const telp = document.getElementById('kTelp').value;
-            const domisili = document.getElementById('kDomisili').value;
-            const layanan = document.getElementById('kLayanan').value;
-            const kriteria = document.getElementById('kKriteria').value;
+            const nama = encodeURIComponent(document.getElementById('kNama').value);
+            const telp = encodeURIComponent(document.getElementById('kTelp').value);
+            const domisili = encodeURIComponent(document.getElementById('kDomisili').value);
+            const layanan = encodeURIComponent(document.getElementById('kLayanan').value);
+            const kriteria = encodeURIComponent(document.getElementById('kKriteria').value);
             
             const teksSurat = `*FORM PERMINTAAN KLIEN VIP*%0A%0A*Salam Hormat Tim PT. Anugrah Pratama Mandiri*,%0ASaya mengajukan permintaan tenaga kerja dengan spesifikasi berikut:%0A%0A *Representatif:* ${nama}%0A *No. WhatsApp:* ${telp}%0A *Area Domisili:* ${domisili}%0A *Layanan Pilihan:* ${layanan}%0A%0A*Detail Instruksi Khusus:*%0A_"${kriteria}"_%0A%0AMohon untuk dapat ditindaklanjuti dengan pengiriman portofolio kandidat yang sesuai. Terima kasih.`;
             
@@ -727,16 +751,16 @@
 
         // PEMROSESAN FORM HRD / PELAMAR
         document.getElementById('formLamar').addEventListener('submit', function(e) {
-            const nama = document.getElementById('pNama').value;
-            const telp = document.getElementById('pTelp').value;
-            const usia = document.getElementById('pUsia').value;
-            const asal = document.getElementById('pAsal').value;
-            const posisi = document.getElementById('pPosisi').value;
+            const nama = encodeURIComponent(document.getElementById('pNama').value);
+            const telp = encodeURIComponent(document.getElementById('pTelp').value);
+            const usia = encodeURIComponent(document.getElementById('pUsia').value);
+            const asal = encodeURIComponent(document.getElementById('pAsal').value);
+            const posisi = encodeURIComponent(document.getElementById('pPosisi').value);
             
             // Evaluasi Ceklis Syarat
             let kesiapanArray = [];
             document.querySelectorAll('.cb-kesiapan:checked').forEach((cb) => { 
-                kesiapanArray.push("✔️ " + cb.value); 
+                kesiapanArray.push(encodeURIComponent("✔️ " + cb.value)); 
             });
             const kesiapanTeks = kesiapanArray.length > 0 ? kesiapanArray.join("%0A") : "❌ Belum ada kesiapan yang dikonfirmasi.";
 
@@ -770,18 +794,42 @@
 
         // 5. FITUR COPY NOMOR WA KE CLIPBOARD
         function copyWA(btnElement) {
-            navigator.clipboard.writeText("08139898660").then(() => {
-                const teksAsli = btnElement.innerHTML;
+            const nomorWA = "08139898660";
+            const teksAsli = btnElement.innerHTML;
+            const berhasil = () => {
                 btnElement.innerHTML = '<i class="ph-bold ph-check"></i> Tersalin!';
                 btnElement.style.backgroundColor = 'var(--gold-accent)';
                 btnElement.style.borderColor = 'var(--gold-accent)';
-                
                 setTimeout(() => {
                     btnElement.innerHTML = teksAsli;
                     btnElement.style.backgroundColor = 'rgba(255,255,255,0.1)';
                     btnElement.style.borderColor = 'rgba(255,255,255,0.2)';
                 }, 3000);
-            });
+            };
+            // Clipboard API (HTTPS) dengan fallback untuk HTTP/localhost
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(nomorWA).then(berhasil).catch(() => {
+                    btnElement.innerHTML = '<i class="ph-bold ph-x"></i> Gagal menyalin';
+                    setTimeout(() => { btnElement.innerHTML = teksAsli; }, 2000);
+                });
+            } else {
+                // Fallback: execCommand untuk HTTP
+                const el = document.createElement('textarea');
+                el.value = nomorWA;
+                el.style.position = 'absolute';
+                el.style.left = '-9999px';
+                document.body.appendChild(el);
+                el.select();
+                try {
+                    document.execCommand('copy');
+                    berhasil();
+                } catch {
+                    btnElement.innerHTML = '<i class="ph-bold ph-x"></i> Gagal menyalin';
+                    setTimeout(() => { btnElement.innerHTML = teksAsli; }, 2000);
+                } finally {
+                    document.body.removeChild(el);
+                }
+            }
         }
 
         // 6. HAMBURGER MENU (UNTUK LAYAR HP)
