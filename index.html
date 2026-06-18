@@ -1147,181 +1147,105 @@
         }
 
         /* ========================================================
-           RESPONSIVE (MOBILE & TABLET)
-        ======================================================== */
-        @media (max-width: 1024px) {
+   10. MEDIA QUERIES (OPTIMIZED)
+======================================================== */
 
-            .about-grid,
-            .forms-wrapper,
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 50px;
+        /* Tablet & Laptop Kecil */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
             }
 
             .hero-stats {
                 display: none;
             }
+        }
 
-            .map-wrapper {
-                height: 300px;
+        /* Tablet & HP Besar */
+        @media (max-width: 992px) {
+
+            .about-grid,
+            .forms-wrapper,
+            .footer-grid,
+            .v-m-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .section-title,
+            .v-m-title {
+                font-size: 2.2rem;
             }
         }
 
+        /* Smartphone */
         @media (max-width: 768px) {
-            .hero {
-                background-attachment: scroll;
-            }
-
-            .grid-2col {
-                grid-template-columns: 1fr;
-            }
-
-            .menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--bg-base);
-                flex-direction: column;
-                gap: 0;
-                padding: 0;
-                box-shadow: var(--shadow-md);
-                display: none;
-                border-top: 1px solid var(--border-color);
-            }
-
-            .menu.active {
-                display: flex;
-            }
-
-            .menu a {
-                padding: 15px 24px;
-                width: 100%;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            .menu a.nav-link::after {
-                display: none;
-            }
-
-            .btn-gold {
-                border-radius: 0;
-                padding: 15px 24px !important;
-            }
-
             .hamburger {
                 display: block;
             }
 
+            .menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--bg-base);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s;
+                box-shadow: var(--shadow-md);
+            }
+
+            .menu.active {
+                left: 0;
+            }
+
+            .hero {
+                height: auto;
+                padding: 100px 0;
+            }
+
             .hero-title {
-                font-size: 3rem;
-            }
-
-            .section-title {
                 font-size: 2.2rem;
-            }
-
-            .section-padding {
-                padding: 80px 0;
-            }
-
-            .floating-container {
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .wa-float {
-                width: 55px;
-                height: 55px;
-                font-size: 1.8rem;
-            }
-
-            .wa-bubble {
-                display: none;
             }
 
             .hero-buttons {
                 flex-direction: column;
             }
 
-            .btn-outline {
-                text-align: center;
+            .section-padding {
+                padding: 60px 0;
             }
 
             .form-card {
-                padding: 30px 20px;
+                padding: 25px;
+            }
+
+            /* Perbaikan agar elemen tidak keluar layar */
+            body {
+                overflow-x: hidden;
+                width: 100vw;
+            }
+
+            .container {
+                padding: 0 20px;
             }
         }
 
-        /* Styling Baru - Elegan & Premium */
-        .company-profile-refined {
-            padding: 120px 0;
-            background: var(--bg-base);
-            position: relative;
-            overflow: hidden;
-        }
+        /* Smartphone Kecil */
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
 
-        .v-m-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
+            .hero-title {
+                font-size: 1.8rem;
+            }
 
-        /* Styling Foto */
-        .profile-image-container {
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .profile-image-container img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .profile-image-container:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Editorial Text */
-        .v-m-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--navy-dark);
-            line-height: 1;
-            margin-bottom: 40px;
-        }
-
-        .v-m-box {
-            padding: 30px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 20px;
-            transition: var(--transition);
-        }
-
-        .v-m-box:hover {
-            border-color: var(--gold-accent);
-            background: var(--gray-bg);
-            transform: translateY(-5px);
-        }
-
-        .v-m-box h4 {
-            font-size: 1.25rem;
-            margin-bottom: 15px;
-            color: var(--navy-dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .v-m-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .stat-number {
+                font-size: 2rem;
             }
         }
     </style>
